@@ -16,6 +16,7 @@
 .gitattributes
 composer.json
 composer.lock
+vendor/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
