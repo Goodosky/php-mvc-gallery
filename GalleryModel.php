@@ -16,6 +16,7 @@ class Gallery
     );
 
     $this->db = $client->wai->images;
+    // $this->db->drop();
   }
 
   public function getAllImages()
@@ -23,14 +24,14 @@ class Gallery
     return $this->db->find();
   }
 
-  function addImage($image, $author, $title)
+  function addImage($image, $author, $title, $watermark_text)
   {
     $format = get_fileformat_from_filename($image['name']);
     $filename = time() . '.' . $format;
     $upload_dir = "static/images/";
 
     // Save original image in $upload_dir
-    move_uploaded_file($image['tmp_name'], $upload_dir . 'original-' . $filename);
+    move_uploaded_file($image['tmp_name'], $upload_dir . $filename);
 
     // Save image in the database;
     $this->db->insertOne([
@@ -38,5 +39,8 @@ class Gallery
       'author' => $author,
       'title' => $title
     ]);
+
+    // Create images with watermark and thumbnail
+    generate_image_variants($upload_dir, $filename, $watermark_text);
   }
 }

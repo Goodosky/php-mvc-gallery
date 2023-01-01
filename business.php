@@ -20,3 +20,30 @@ function file_valdation($form)
     "size" => $form['size'] > 0 && $form['size'] / 1048576 <= 1 // <= 1MB
   ];
 }
+
+function generate_image_variants($upload_dir, $filename, $watermark_text)
+{
+  $format = get_fileformat_from_filename($filename);
+
+  // Open image
+  if ($format == "jpg") {
+    $img = imagecreatefromjpeg($upload_dir . $filename);
+  } else {
+    $img = imagecreatefrompng($upload_dir . $filename);
+  }
+
+  // Write the red string at the top left
+  $textcolor = imagecolorallocate($img, 255, 0, 0);
+  imagestring($img, 5, 0, 0, $watermark_text, $textcolor);
+
+  // Save watermarked file
+  imagepng($img, $upload_dir . "watermarked-" . $filename);
+
+  // Scale image to 200x125 px and create a thumbnail
+  $thumb = imagescale($img, 200, 125);
+  imagepng($thumb, $upload_dir . "thumb-" . $filename);
+
+  // Free allocated memmory
+  imagedestroy($thumb);
+  imagedestroy($img);
+}
