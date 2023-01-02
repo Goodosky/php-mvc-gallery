@@ -39,7 +39,7 @@ class GalleryController
   function rememberSelected()
   {
     if (isset($_POST['selected_images'])) {
-      $_SESSION['selected_images'] = $_POST['selected_images'];
+      $_SESSION['selected_images'] =  array_unique(array_merge($_SESSION['selected_images'], $_POST['selected_images']));
     }
 
     // Redirect index and show the Gallery
