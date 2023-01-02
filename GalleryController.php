@@ -6,6 +6,7 @@ class GalleryController
   function __construct()
   {
     $this->gallery = new Gallery();
+    $this->userModel = new User();
   }
 
   function index()
@@ -28,7 +29,7 @@ class GalleryController
     }
 
     // Show image view
-    require_once "views/addView.php";
+    require_once "views/addImageView.php";
   }
 
   function rememberSelected()
@@ -71,5 +72,52 @@ class GalleryController
   {
     http_response_code(404);
     require_once 'views/404View.php';
+  }
+
+  function addUser()
+  {
+    // Handle form submission
+    if (isset($_POST['email'], $_POST['login'], $_POST['password'])) {
+      if ($this->userModel->addUser($_POST['login'], $_POST['email'], $_POST['password'])) {
+        $message = "Pomyślnie utworzono konto!";
+      } else {
+        $message = "Jakiś błąd! Prawdopodobnie ten login (lub e-mail) jest już zajęty";
+      };
+    }
+
+    // Show register form
+    require_once 'views/addUserView.php';
+  }
+
+  function login()
+  {
+    // Handle form submission
+    if (isset($_POST['login'], $_POST['password'])) {
+      $user_id = $this->userModel->login($_POST['login'], $_POST['password']);
+
+      if ($user_id) {
+        session_regenerate_id(true);
+        $_SESSION['user_id'] = $user_id;
+        $message = "Pomyślnie zalogowano!";
+      } else {
+        $message = "Niepoprawny login lub hasło!";
+      }
+    }
+
+    $userLoggedIn = isset($_SESSION['user_id']);
+
+    // Show login form
+    require_once "views/loginView.php";
+  }
+
+  function logout()
+  {
+    setcookie(session_name(), "", time() - 3600);
+    session_destroy();
+    $_SESSION = [];
+
+    // Redirect to the login page
+    header("Location: /login");
+    exit;
   }
 }

@@ -2,7 +2,7 @@
 require_once "vendor/autoload.php";
 require_once "GalleryController.php";
 require_once "GalleryModel.php";
-// require_once "UserModel.php";
+require_once "UserModel.php";
 require_once "business.php";
 
 
@@ -15,8 +15,9 @@ class Dispatcher
     '/remember-selected' => 'rememberSelected',
     '/show-selected' => 'showSelected',
     '/remove-selected' => 'removeSelected',
-    // '/addUser' => 'addUser',
-    // '/login' => 'login',
+    '/addUser' => 'addUser',
+    '/login' => 'login',
+    '/logout' => 'logout',
   ];
 
 

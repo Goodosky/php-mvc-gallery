@@ -3,7 +3,7 @@ $title = "Dodaj zdjęcie";
 include "partials/header.php";
 ?>
 
-<form action="/add" method="post" enctype="multipart/form-data" class="bg-light p-6 rounded-md">
+<form action="/addImage" method="post" enctype="multipart/form-data" class="bg-light p-6 rounded-md">
   <h2>Dodaj zdjęcie do galerii</h2>
 
   <!-- Author -->
