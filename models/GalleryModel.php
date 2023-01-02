@@ -5,14 +5,7 @@ class Gallery
 
   public function __construct()
   {
-    $client = new MongoDB\Client(
-      "mongodb://localhost:27017/wai",
-      [
-        'username' => 'wai_web',
-        'password' => 'w@i_w3b',
-      ]
-    );
-
+    $client = get_db_client();
     $this->db = $client->wai->images;
   }
 

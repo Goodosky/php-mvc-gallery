@@ -1,4 +1,17 @@
 <?php
+function get_db_client()
+{
+  $client = new MongoDB\Client(
+    "mongodb://localhost:27017/wai",
+    [
+      'username' => 'wai_web',
+      'password' => 'w@i_w3b',
+    ]
+  );
+
+  return $client;
+}
+
 function get_fileformat_from_filename($filename)
 {
   $tmp = explode(".", $filename);
