@@ -4,6 +4,7 @@ require_once "GalleryController.php";
 require_once "models/GalleryModel.php";
 require_once "models/UserModel.php";
 require_once "business.php";
+require_once "config.php";
 
 
 class Dispatcher

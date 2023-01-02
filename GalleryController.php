@@ -2,6 +2,7 @@
 class GalleryController
 {
   private $gallery;
+  private $userModel;
 
   function __construct()
   {
@@ -11,8 +12,11 @@ class GalleryController
 
   function index()
   {
-    $images = $this->gallery->getAllImages();
+    $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $number_of_pages = $this->gallery->countPages();
+    $images = $this->gallery->getImages($current_page);
     $selected_images = isset($_SESSION['selected_images']) ? $_SESSION['selected_images'] : [];
+
     require_once "views/indexView.php";
   }
 

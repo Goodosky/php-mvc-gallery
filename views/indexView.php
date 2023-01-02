@@ -26,4 +26,24 @@ include "partials/header.php";
   </div>
 </form>
 
+<!-- Pagination -->
+<?php if ($number_of_pages > 1) : ?>
+  <ul class="flex gap-x-5 mt-10">
+    <?php
+    // Previous page
+    if ($current_page > 1) {
+      echo '<li><a class="btn2 text-base" href="/?page=' . ($current_page - 1) . '">Poprzednia strona</a></li>';
+    }
+
+    // Display number of current page
+    echo '<li>Strona ' . $current_page . '/' . $number_of_pages . '</li>';
+
+    // Next page
+    if ($current_page < $number_of_pages) {
+      echo '<li><a class="btn2 text-base" href="/?page=' . ($current_page + 1) . '">Następna strona</a></li>';
+    }
+    ?>
+  </ul>
+<?php endif; ?>
+
 <?php include "partials/footer.php"; ?>

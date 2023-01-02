@@ -9,9 +9,15 @@ class Gallery
     $this->db = $client->wai->images;
   }
 
-  public function getAllImages()
+  public function getImages($page)
   {
-    return $this->db->find();
+    $start_index = ($page - 1) * IMAGES_PER_PAGE;
+    $images = $this->db->find([], [
+      'limit' => IMAGES_PER_PAGE,
+      'skip' => $start_index,
+    ]);
+
+    return $images;
   }
 
   public function getSelectedImages($selected_images)
@@ -41,5 +47,12 @@ class Gallery
 
     // Create images with watermark and thumbnail
     generate_image_variants($upload_dir, $filename, $watermark_text);
+  }
+
+  function countPages()
+  {
+    $count_images = $this->db->count();
+    $count_pages = ceil($count_images / IMAGES_PER_PAGE);
+    return $count_pages;
   }
 }
