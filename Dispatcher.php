@@ -2,6 +2,7 @@
 require_once "vendor/autoload.php";
 require_once "GalleryController.php";
 require_once "GalleryModel.php";
+// require_once "UserModel.php";
 require_once "business.php";
 
 
@@ -10,8 +11,12 @@ class Dispatcher
   private $routes = [
     // Views
     '/' => 'index',
-    '/add' => 'add',
-    '/delete' => 'delete',
+    '/addImage' => 'addImage',
+    '/remember-selected' => 'rememberSelected',
+    '/show-selected' => 'showSelected',
+    '/remove-selected' => 'removeSelected',
+    // '/addUser' => 'addUser',
+    // '/login' => 'login',
   ];
 
 

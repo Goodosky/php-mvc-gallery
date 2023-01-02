@@ -5,14 +5,25 @@ include "partials/header.php";
 
 <h1>Galeria Zdjęć</h1>
 
-<div class="grid grid-cols-3 gap-5 mt-16">
-  <?php foreach ($images as $image) : ?>
-    <a href="static/images/watermarked-<?php echo $image['filename'] ?>">
-      <img class="rounded-md" alt="" src="static/images/thumb-<?php echo $image['filename'] ?>" />
-      <span class="text-base"><b>Autor:</b> <?php echo $image['author'] ?></span><br>
-      <span class="text-base"><b>Tytuł:</b> <?php echo $image['title'] ?></span>
-    </a>
-  <?php endforeach ?>
-</div>
+<form action="/remember-selected" method="POST">
+  <div class="grid grid-cols-3 gap-5 mt-16">
+    <?php foreach ($images as $image) : ?>
+      <a href="static/images/watermarked-<?= $image['filename'] ?>">
+        <img class="rounded-md" alt="" src="static/images/thumb-<?= $image['filename'] ?>" />
+        <span class="text-base"><b>Autor:</b> <?= $image['author'] ?></span><br>
+        <span class="text-base"><b>Tytuł:</b> <?= $image['title'] ?></span><br>
+
+        <div class="text-base bg-dark flex w-fit px-3 rounded text-white mt-1">
+          <input type="checkbox" name="selected_images[]" id="<?= $image['filename'] ?>" value="<?= $image['filename'] ?>" <?= in_array($image['filename'], $selected_images) ? 'checked' : ''; ?>>
+          <label class="px-3" for="<?= $image['filename'] ?>">Zapamiętaj</label>
+        </div>
+      </a>
+    <?php endforeach ?>
+  </div>
+
+  <div class="mt-10">
+    <button type=" submit" name="action" value="remember_selected" class="text-lg bg-dark flex w-fit p-3 px-10 rounded text-white mt-1">Zapamiętaj wybrane</button>
+  </div>
+</form>
 
 <?php include "partials/footer.php"; ?>

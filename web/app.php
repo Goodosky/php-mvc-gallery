@@ -1,7 +1,9 @@
 <?php
 require_once '../Dispatcher.php';
 
-session_start();
+if (!isset($_SESSION)) {
+  session_start();
+}
 
 $dispatcher = new Dispatcher();
 $dispatcher->dispatch();

@@ -22,6 +22,17 @@ class Gallery
     return $this->db->find();
   }
 
+  public function getSelectedImages($selected_images)
+  {
+    // Create filter
+    $filter = ['filename' => ['$in' => $selected_images]];
+
+    // Get images using this filter
+    $images = $this->db->find($filter);
+
+    return $images;
+  }
+
   function addImage($image, $author, $title, $watermark_text)
   {
     $format = get_fileformat_from_filename($image['name']);
