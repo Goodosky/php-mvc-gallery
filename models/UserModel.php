@@ -1,7 +1,7 @@
 <?php
 class User
 {
-  private $users; // images collection
+  private $db; // 'users' collection
 
   public function __construct()
   {
@@ -14,7 +14,6 @@ class User
     );
 
     $this->db = $client->wai->users;
-    // $this->db->drop();
   }
 
 

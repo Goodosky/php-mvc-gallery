@@ -1,7 +1,7 @@
 <?php
 class Gallery
 {
-  private $db; // images collection
+  private $db; // 'images' collection
 
   public function __construct()
   {
@@ -14,7 +14,6 @@ class Gallery
     );
 
     $this->db = $client->wai->images;
-    // $this->db->drop();
   }
 
   public function getAllImages()
@@ -27,10 +26,8 @@ class Gallery
     // Create filter
     $filter = ['filename' => ['$in' => $selected_images]];
 
-    // Get images using this filter
-    $images = $this->db->find($filter);
-
-    return $images;
+    // Get images using this filter and return them
+    return $this->db->find($filter);
   }
 
   function addImage($image, $author, $title, $watermark_text)
