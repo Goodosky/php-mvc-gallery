@@ -9,10 +9,10 @@
       </div>
       <nav>
         <ul class="flex gap-x-5 gap-y-2 maxsm:flex-col maxsm:mt-5 items-center">
-          <li><a class="lg font-light hover:text-white" href="zasady-gry.html">Zasady Gry</a></li>
-          <li><a class="lg font-light hover:text-white" href="minigra.html">Minigra</a></li>
-          <li><a class="lg font-light hover:text-white" href="https://www.transfermarkt.pl/">Transfermarkt</a></li>
-          <li><a class="lg font-light hover:text-white" href="http://www.90minut.pl/">90minut</a></li>
+          <li><a class="lg font-light hover:text-white" href="/add-image">Dodaj zdjęcie</a></li>
+          <li><a class="lg font-light hover:text-white" href="/show-selected">Pokaż zapisane</a></li>
+          <li><a class="lg font-light hover:text-white" href="/add-user">Zarejestruj się</a></li>
+          <li><a class="lg font-light hover:text-white" href="/login">Zaloguj się</a></li>
         </ul>
       </nav>
     </div>

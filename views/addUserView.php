@@ -3,7 +3,7 @@ $title = "Zarejestruj się";
 include "partials/header.php";
 ?>
 
-<form action="/addUser" method="post" enctype="multipart/form-data" class="bg-light p-6 rounded-md">
+<form action="/add-user" method="post" enctype="multipart/form-data" class="bg-light p-6 rounded-md">
   <h2>Zarejestruj się</h2>
 
   <!-- Login -->

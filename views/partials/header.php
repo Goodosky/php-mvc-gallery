@@ -18,7 +18,7 @@
     <div class="container flex items-center text-xl pt-3">
       <a class="text-white uppercase text-2xl tracking-widest font-light xl:text-3xl" href="/">Piłeczka24<span class="text-xl">.pl</span></a>
       <ul class="gap-7 lg:flex lg:justify-center text-white/95 ml-auto mr-12 maxlg:hidden">
-        <li><a class="animated-underline" href="/addImage">Dodaj zdjęcie</a></li>
+        <li><a class="animated-underline" href="/add-image">Dodaj zdjęcie</a></li>
         <li><a class="animated-underline" href="/show-selected">Pokaż zapisane</a></li>
       </ul>
       <a class="btn flex items-center maxlg:-mt-1 maxlg:p-3 maxlg:ml-auto" id="change-theme-btn" href="/login"><svg class="text-c1 lg:mr-2 lg:hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">

@@ -11,11 +11,11 @@ class Dispatcher
 {
   private $routes = [
     '/' => 'index',
-    '/addImage' => 'addImage',
+    '/add-image' => 'addImage',
     '/remember-selected' => 'rememberSelected',
     '/show-selected' => 'showSelected',
     '/remove-selected' => 'removeSelected',
-    '/addUser' => 'addUser',
+    '/add-user' => 'addUser',
     '/login' => 'login',
     '/logout' => 'logout',
   ];
