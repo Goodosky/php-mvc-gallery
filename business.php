@@ -1,10 +1,4 @@
 <?php
-function go_to_404()
-{
-  http_response_code(404);
-  include 'views/404View.php';
-};
-
 function get_fileformat_from_filename($filename)
 {
   $tmp = explode(".", $filename);

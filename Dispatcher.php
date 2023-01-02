@@ -23,16 +23,15 @@ class Dispatcher
   function dispatch()
   {
     $path = parse_url($_SERVER['REQUEST_URI'])["path"];
+    $controller = new GalleryController();
 
     // If route not found (404)
     if (!isset($this->routes[$path])) {
-      go_to_404();
-      return;
+      $controller->error_404();
+      exit();
     }
 
     $action = $this->routes[$path];
-
-    $controller = new GalleryController();
     $controller->$action();
   }
 }
