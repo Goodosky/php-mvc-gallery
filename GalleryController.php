@@ -8,6 +8,8 @@ class GalleryController
   {
     $this->gallery = new Gallery();
     $this->userModel = new User();
+
+    if (!isset($_SESSION['selected_images'])) $_SESSION['selected_images'] = [];
   }
 
   function index()
@@ -29,6 +31,10 @@ class GalleryController
       if ($is_valid["format"] && $is_valid["size"]) {
         // Add img to db
         $this->gallery->addImage($_FILES['image'], $_POST['author'], $_POST['title'], $_POST['watermark']);
+
+        // Redirect user to prevent form resubmission
+        header("Location: /add-image");
+        exit;
       }
     }
 
@@ -51,7 +57,7 @@ class GalleryController
   {
     $images = [];
 
-    if (isset($_SESSION['selected_images'])) {
+    if (!empty($_SESSION['selected_images'])) {
       $images = $this->gallery->getSelectedImages($_SESSION['selected_images']);
     }
 
