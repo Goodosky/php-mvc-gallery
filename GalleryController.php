@@ -108,7 +108,10 @@ class GalleryController
       if ($user_id) {
         session_regenerate_id(true);
         $_SESSION['user_id'] = $user_id;
-        $message = "Pomyślnie zalogowano!";
+
+        // Redirect user to prevent form resubmission
+        header("Location: /");
+        exit;
       } else {
         $message = "Niepoprawny login lub hasło!";
       }
